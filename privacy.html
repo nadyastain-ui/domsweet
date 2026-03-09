@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Политика конфиденциальности — Уютный Дом</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css?v=2">
     <style>
         .privacy-container {
             padding: 100px 0 60px;
@@ -31,6 +31,61 @@
             text-decoration: none;
             border-radius: 8px;
             font-weight: 600;
+        }
+    </style>
+
+    <style>
+        /* INLINE CHECKBOX CSS TO BYPASS CACHE */
+        .custom-checkbox-label {
+            display: flex !important;
+            align-items: flex-start !important;
+            gap: 10px !important;
+            cursor: pointer !important;
+            text-align: left !important;
+            line-height: 1.4 !important;
+            user-select: none !important;
+            position: relative !important;
+            margin-top: 15px !important;
+        }
+
+        .custom-checkbox-input {
+            position: absolute !important;
+            opacity: 0 !important;
+            cursor: pointer !important;
+            height: 0 !important;
+            width: 0 !important;
+        }
+
+        .custom-checkbox-box {
+            min-width: 18px !important;
+            width: 18px !important;
+            height: 18px !important;
+            background-color: transparent !important;
+            border: 2px solid var(--color-accent, #E88D39) !important;
+            border-radius: 4px !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            transition: all 0.3s ease !important;
+            margin-top: 2px !important;
+            flex-shrink: 0 !important;
+        }
+
+        .custom-checkbox-input:checked ~ .custom-checkbox-box {
+            background-color: var(--color-accent, #E88D39) !important;
+        }
+
+        .custom-checkbox-input:checked ~ .custom-checkbox-box::after {
+            content: "✓" !important;
+            color: white !important;
+            font-size: 14px !important;
+            font-weight: bold !important;
+        }
+        
+        .custom-checkbox-text {
+            flex: 1 !important;
+            font-size: 0.8rem !important;
+            color: inherit !important;
         }
     </style>
 </head>

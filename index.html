@@ -20,7 +20,7 @@
     <!-- Swiper CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css?v=2">
     <!-- Favicon (placeholder) -->
     <link rel="icon"
         href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏠</text></svg>">
@@ -67,6 +67,58 @@
       ]
     }
     </script>
+
+    <style>
+        /* INLINE CHECKBOX CSS TO BYPASS CACHE */
+        .custom-checkbox-label {
+            display: flex !important;
+            align-items: flex-start !important;
+            gap: 10px !important;
+            cursor: pointer !important;
+            text-align: left !important;
+            line-height: 1.4 !important;
+            user-select: none !important;
+            position: relative !important;
+        }
+
+        .custom-checkbox-input {
+            position: absolute !important;
+            opacity: 0 !important;
+            cursor: pointer !important;
+            height: 0 !important;
+            width: 0 !important;
+        }
+
+        .custom-checkbox-box {
+            min-width: 18px !important;
+            width: 18px !important;
+            height: 18px !important;
+            background-color: transparent !important;
+            border: 2px solid var(--color-accent) !important;
+            border-radius: 4px !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            transition: all 0.3s ease !important;
+            margin-top: 2px !important;
+            flex-shrink: 0 !important;
+        }
+
+        .custom-checkbox-input:checked~.custom-checkbox-box {
+            background-color: var(--color-accent) !important;
+        }
+
+        .custom-checkbox-input:checked~.custom-checkbox-box::after {
+            content: "✓" !important;
+            color: white !important;
+            font-size: 14px !important;
+            font-weight: bold !important;
+        }
+
+        .custom-checkbox-text {
+            flex: 1 !important;
+        }
+    </style>
 </head>
 
 <body>
@@ -359,7 +411,12 @@
                     <form class="cta-form">
                         <input type="text" placeholder="Ваше имя" required class="form-input">
                         <input type="tel" placeholder="Номер телефона" required class="form-input">
-                        <button type="submit" class="btn btn-primary">Оставить заявку на индивидуальный расчет</button><p class="form-policy" style="margin-top: 15px; font-size: 0.8rem; color: rgba(255,255,255,0.7);">Отправляя свои данные, вы соглашаетесь с <a href="privacy.html" target="blank" style="text-decoration: underline; color: inherit;">политикой обработки персональных данных</a></p>
+                        
+                        <div style="display: flex; align-items: flex-start; margin-top: 15px; margin-bottom: 15px;">
+                            <input type="checkbox" required style="margin-right: 8px; margin-top: 3px; cursor: pointer;">
+                            <label style="font-size: 0.8rem; color: rgba(255, 255, 255, 0.7); line-height: 1.4; cursor: pointer;">Я согласен на обработку персональных данных и соглашаюсь с <a href="privacy.html" target="_blank" style="text-decoration: underline; color: inherit;">политикой</a></label>
+                        </div>
+<button type="submit" class="btn btn-primary">Оставить заявку на индивидуальный расчет</button>
                     </form>
                 </div>
             </div>
@@ -679,14 +736,16 @@
                         <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"
                             xmlns="http://www.w3.org/2000/svg">
                             <path
-                                d="M13.162 18.994c-6.845 0-10.742-4.708-10.875-12.536h3.402c.081 5.952 2.658 8.411 4.671 8.93v-8.93h3.208v5.101c1.986-.217 4.102-2.585 4.823-5.101h3.208c-.615 3.09-2.868 5.37-4.436 6.253 1.567.722 4.09 2.76 4.966 6.283H18.61c-.687-2.617-2.62-4.48-5.323-4.757v4.757h-1.125z" />
+                                                                d="M13.162 18.994c-6.845 0-10.742-4.708-10.875-12.536h3.402c.081 5.952 2.658 8.411 4.671 8.93v-8.93h3.208v5.101c1.986-.217 4.102-2.585 4.823-5.101h3.208c-.615 3.09-2.868 5.37-4.436 6.253 1.567.722 4.09 2.76 4.966 6.283H18.61c-.687-2.617-2.62-4.48-5.323-4.757v4.757h-1.125z" />
                         </svg>
                     </a>
                 </div>
             </div>
         </div>
         <div class="container footer-bottom">
-            <p>&copy; 2026 Уютный дом. Все права защищены. <a href="privacy.html" style="color: inherit; text-decoration: underline; margin-left: 10px;">Политика конфиденциальности</a></p>
+            <p>&copy; 2026 Уютный дом. Все права защищены. <a href="privacy.html"
+                    style="color: inherit; text-decoration: underline; margin-left: 10px;">Политика
+                    конфиденциальности</a></p>
         </div>
     </footer>
 
@@ -703,8 +762,12 @@
             <form class="modal-form">
                 <input type="text" placeholder="Ваше имя" required class="form-input">
                 <input type="tel" placeholder="Ваш телефон" required class="form-input">
-                <button type="submit" class="btn btn-primary w-100">Зафиксировать подарок</button>
-                <p class="form-policy">Отправляя свои данные, вы соглашаетесь с <a href="privacy.html" target="blank" style="text-decoration: underline; color: inherit;">политикой обработки персональных данных</a></p>
+                
+                <div style="display: flex; align-items: flex-start; margin-top: 15px; margin-bottom: 10px;">
+                    <input type="checkbox" required style="margin-right: 8px; margin-top: 3px; cursor: pointer;">
+                    <label style="font-size: 0.8rem; color: #718096; line-height: 1.4; cursor: pointer;">Я согласен на обработку персональных данных и соглашаюсь с <a href="privacy.html" target="_blank" style="text-decoration: underline; color: inherit;">политикой</a></label>
+                </div>
+<button type="submit" class="btn btn-primary w-100">Зафиксировать подарок</button>
             </form>
         </div>
     </div>
@@ -722,8 +785,12 @@
                 <input type="tel" placeholder="Ваш телефон *" required class="form-input">
                 <textarea placeholder="Ваши пожелания по проекту (необязательно)" class="form-input"
                     rows="4"></textarea>
-                <button type="submit" class="btn btn-primary w-100">Отправить заявку</button>
-                <p class="form-policy">Отправляя свои данные, вы соглашаетесь с <a href="privacy.html" target="blank" style="text-decoration: underline; color: inherit;">политикой обработки персональных данных</a></p>
+                
+                <div style="display: flex; align-items: flex-start; margin-top: 15px; margin-bottom: 10px;">
+                    <input type="checkbox" required style="margin-right: 8px; margin-top: 3px; cursor: pointer;">
+                    <label style="font-size: 0.8rem; color: #718096; line-height: 1.4; cursor: pointer;">Я согласен на обработку персональных данных и соглашаюсь с <a href="privacy.html" target="_blank" style="text-decoration: underline; color: inherit;">политикой</a></label>
+                </div>
+<button type="submit" class="btn btn-primary w-100">Отправить заявку</button>
             </form>
         </div>
     </div>

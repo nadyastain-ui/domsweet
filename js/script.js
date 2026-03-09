@@ -1488,8 +1488,11 @@ document.addEventListener('DOMContentLoaded', () => {
                         <form class="modal-form" id="call-form">
                             <input type="text" class="form-input" placeholder="Ваше имя" required>
                             <input type="tel" class="form-input" placeholder="Ваш телефон" required>
-                            <button type="submit" class="btn btn-primary btn-block">Отправить</button>
-                            <p class="form-policy" style="font-size: 0.75rem; color: #666; margin-top: 12px; line-height: 1.2;">Отправляя свои данные, вы соглашаетесь с <a href="privacy.html" target="blank" style="text-decoration: underline; color: inherit;">политикой обработки персональных данных</a></p>
+                            <div style="display: flex; align-items: flex-start; margin-top: 15px; margin-bottom: 15px;">
+                                <input type="checkbox" required style="margin-right: 8px; margin-top: 3px; width: 16px; height: 16px; cursor: pointer;">
+                                <label style="font-size: 0.8rem; color: #718096; line-height: 1.4; cursor: pointer;">Я согласен на обработку персональных данных и соглашаюсь с <a href="privacy.html" target="_blank" style="text-decoration: underline; color: inherit;">политикой</a></label>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block" style="width: 100%;">Отправить</button>
                         </form>
                     </div>
                 </div>
@@ -1523,14 +1526,64 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        if (callForm) {
-            callForm.addEventListener('submit', (e) => {
+        // Обработка отправки всех форм на сайте в Битрикс24
+        const allForms = document.querySelectorAll('form');
+        allForms.forEach(form => {
+            form.addEventListener('submit', async (e) => {
                 e.preventDefault();
-                alert('Спасибо! Ваша заявка отправлена. Мы скоро свяжемся с вами.');
-                callModal.classList.remove('active');
-                callForm.reset();
+
+                const nameInput = form.querySelector('input[type="text"]');
+                const phoneInput = form.querySelector('input[type="tel"]');
+                const messageInput = form.querySelector('textarea');
+
+                const nameValue = nameInput ? nameInput.value : 'Без имени';
+                const phoneValue = phoneInput ? phoneInput.value : 'Не указан';
+                const messageValue = messageInput ? messageInput.value : '';
+
+                // TODO: Вставьте ваш входящий вебхук Битрикс24 вместо пустой строки!
+                // Пример: 'https://vash-domen.bitrix24.ru/rest/1/1as2d3f4g5h6j7k8/crm.lead.add.json'
+                const bitrixWebhookUrl = 'https://mvillage.bitrix24.ru/rest/7/f1um8857s7je3gys/crm.lead.add.json';
+
+                if (bitrixWebhookUrl) {
+                    try {
+                        const response = await fetch(bitrixWebhookUrl, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                fields: {
+                                    TITLE: "Новая заявка с сайта Уютный Дом",
+                                    NAME: nameValue,
+                                    PHONE: [{ "VALUE": phoneValue, "VALUE_TYPE": "WORK" }],
+                                    COMMENTS: messageValue,
+                                    SOURCE_ID: "WEB"
+                                }
+                            })
+                        });
+                        if (response.ok) {
+                            alert('Спасибо! Ваша заявка успешно отправлена.');
+                        } else {
+                            alert('Произошла ошибка при отправке заявки. Пожалуйста, свяжитесь с нами по телефону.');
+                        }
+                    } catch (error) {
+                        console.error('Ошибка Битрикс24:', error);
+                        alert('Произошла ошибка при отправке заявки. Пожалуйста, свяжитесь с нами по телефону.');
+                    }
+                } else {
+                    console.log('Имитация отправки в Битрикс:', { nameValue, phoneValue, messageValue });
+                    alert('Спасибо! Ваша заявка оправлена. (Внимание: интеграция с Битрикс24 еще не настроена)');
+                }
+
+                form.reset();
+
+                // Закрываем модалки, если форма была внутри них
+                const modal = form.closest('.modal-overlay') || form.closest('.modal');
+                if (modal) {
+                    modal.classList.remove('active');
+                }
             });
-        }
+        });
     };
 
     initCallModal();
