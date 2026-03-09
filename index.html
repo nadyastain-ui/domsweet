@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Строительство загородных домов, бань и бытовок | Надежно и доступно</title>
+    <meta name="description"
+        content="Строительная компания. Строим качественные и недорогие загородные дома, бани и бытовки под ключ в Санкт-Петербурге и Ленинградской области. Эконом-сегмент с премиальным подходом.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Leaflet Map CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Favicon (placeholder) -->
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏠</text></svg>">
+
+    <!-- Schema.org Micromarkup -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HomeAndConstructionBusiness",
+      "name": "Уютный Дом",
+      "image": "https://uyut-dom-spb.ru/images/logo.png",
+      "@id": "https://uyut-dom-spb.ru",
+      "url": "https://uyut-dom-spb.ru",
+      "telephone": "+79930703489",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "пр-т Обуховской обороны, д. 76 корп. 4",
+        "addressLocality": "Санкт-Петербург",
+        "postalCode": "190000",
+        "addressCountry": "RU"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 59.8821,
+        "longitude": 30.4578
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+          "Sunday"
+        ],
+        "opens": "09:00",
+        "closes": "21:00"
+      },
+      "sameAs": [
+        "https://vk.com/sk_uyutdom",
+        "https://t.me/+JQxbJ6UCaIE1NjZi"
+      ]
+    }
+    </script>
+</head>
+
+<body>
+    <header class="header" id="header">
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <img src="images/logo.webp" alt="Уютный Дом" class="logo-img">
+                <span class="logo-text">Уютный <span class="highlight">Дом</span></span>
+            </a>
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="#services" class="nav-link">Каталог</a></li>
+                    <li class="dropdown">
+                        <a href="about.html" class="nav-link">О нас <span class="dropdown-arrow">▼</span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="about.html">О компании</a></li>
+                            <li><a href="news.html">Наши новости</a></li>
+                            <li><a href="jobs.html">Вакансии в команду мечты</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#contacts" class="nav-link">Контакты</a></li>
+                </ul>
+            </nav>
+            <button class="btn btn-primary cta-button">Заказать звонок</button>
+            <div class="mobile-menu-btn" id="mobile-menu-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-bg"></div>
+            <div class="container hero-container">
+                <div class="hero-content">
+                    <span class="badge">Доступное качество</span>
+                    <h1 class="hero-title">Строим дома, бани и бытовки для вашей <span>комфортной жизни</span></h1>
+                    <p class="hero-subtitle">Надежные деревянные конструкции по доступным ценам. От идеи до готового
+                        объекта под ключ с гарантией качества.</p>
+                    <div class="hero-actions">
+                        <a href="#services" class="btn btn-primary btn-large">В каталог построек</a>
+                        <button class="btn btn-secondary btn-large open-calc-modal"
+                            data-project="Главная (Герой)">Рассчитать стоимость</button>
+                    </div>
+                </div>
+                <div class="hero-image-wrapper">
+                    <div class="glass-card stat-card stat-1">
+                        <span class="stat-number">10+</span>
+                        <span class="stat-text">Лет опыта</span>
+                    </div>
+                    <div class="glass-card stat-card stat-2">
+                        <span class="stat-number">500+</span>
+                        <span class="stat-text">Готовых объектов</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROMO WEEK SECTION -->
+        <section class="promo-section reveal" style="padding-top: 80px;">
+            <div class="container">
+                <div class="promo-banner glass-card-dark">
+                    <div class="promo-content">
+                        <span class="promo-badge">Акция недели 🔥</span>
+                        <h2>Заберите ваш подарок: <br><span class="promo-gift-name highlight-gift">Антисептирование
+                                каркаса постройки</span></h2>
+                        <p>Успейте забронировать подарок к вашему будущему дому. Предложение ограничено по времени!</p>
+
+                        <div class="promo-timer">
+                            <div class="timer-box"><span class="promo-days">07</span><small>дней</small></div>
+                            <span class="timer-separator">:</span>
+                            <div class="timer-box"><span class="promo-hours">00</span><small>часов</small></div>
+                            <span class="timer-separator">:</span>
+                            <div class="timer-box"><span class="promo-minutes">00</span><small>минут</small></div>
+                            <span class="timer-separator">:</span>
+                            <div class="timer-box"><span class="promo-seconds">00</span><small>секунд</small></div>
+                        </div>
+                    </div>
+                    <div class="promo-action">
+                        <button class="btn btn-secondary btn-large open-promo-modal">Забронировать подарок</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section class="services section" id="services">
+            <div class="container">
+                <div class="section-header text-center">
+                    <h2 class="section-title">Что мы строим</h2>
+                    <p class="section-desc">Наши решения для вашего загородного участка.</p>
+                </div>
+                <div class="services-grid">
+                    <!-- Service 1 -->
+                    <div class="service-card reveal">
+                        <div class="service-img-wrapper">
+                            <img src="images/catalog-winter-houses.webp" alt="Дома для круглогодичного проживания"
+                                class="service-img">
+                        </div>
+                        <div class="service-card-content">
+                            <h3 class="service-title">Дома для круглогодичного проживания</h3>
+                            <p class="service-text">Надежные и теплые каркасные дома для комфортного проживания всей
+                                семьи в
+                                любое время года.</p>
+                            <a href="catalog-winter-houses.html" class="service-link">Перейти в каталог
+                                <span>→</span></a>
+                        </div>
+                    </div>
+                    <!-- Service 2 -->
+                    <div class="service-card reveal transition-delay-1">
+                        <div class="service-img-wrapper">
+                            <img src="images/catalog-houses.webp" alt="Дачные дома" class="service-img">
+                        </div>
+                        <div class="service-card-content">
+                            <h3 class="service-title">Дачные дома для сезонного проживания</h3>
+                            <p class="service-text">Уютные каркасные дома, идеально подходящие для летнего отдыха и
+                                дачного
+                                сезона.</p>
+                            <a href="catalog-houses.html" class="service-link">Перейти в каталог <span>→</span></a>
+                        </div>
+                    </div>
+                    <!-- Service 3 -->
+                    <div class="service-card reveal transition-delay-2">
+                        <div class="service-img-wrapper">
+                            <img src="images/main-cabin.webp" alt="Бытовки" class="service-img">
+                        </div>
+                        <div class="service-card-content">
+                            <h3 class="service-title">Бытовки</h3>
+                            <p class="service-text">Надежные постройки для хранения инвентаря, инструментов или
+                                временного
+                                проживания.</p>
+                            <a href="catalog-cabins.html" class="service-link">Перейти в каталог <span>→</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Our Works Section -->
+        <section class="gallery-section section" id="our-works">
+            <div class="container">
+                <div class="section-header text-center reveal">
+                    <h2 class="section-title">Наши работы</h2>
+                    <p class="section-desc">Посмотрите фотографии готовых объектов и убедитесь в качестве нашей работы
+                        на реальных примерах.</p>
+                </div>
+
+                <div class="gallery-container reveal transition-delay-1">
+                    <div class="swiper gallery-swiper">
+                        <div class="swiper-wrapper">
+                            <!-- Frame Houses -->
+                            <div class="swiper-slide">
+                                <div class="gallery-card">
+                                    <div class="gallery-img-wrapper">
+                                        <span class="gallery-badge">Каркасный дом</span>
+                                        <img src="images/map-rodnoe-1.webp" alt="КП Родное" class="gallery-img">
+                                    </div>
+                                    <div class="gallery-info">
+                                        <h4 class="gallery-title">КП Родное</h4>
+                                        <div class="gallery-details">
+                                            <span>Мансардный 6х6</span>
+                                            <span>96 м²</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="gallery-card">
+                                    <div class="gallery-img-wrapper">
+                                        <span class="gallery-badge">Барнхаус</span>
+                                        <img src="images/map-fedorovskoe-1.webp" alt="г.п. Федоровское"
+                                            class="gallery-img">
+                                    </div>
+                                    <div class="gallery-info">
+                                        <h4 class="gallery-title">г.п. Федоровское</h4>
+                                        <div class="gallery-details">
+                                            <span>Барнхаус 3х10</span>
+                                            <span>30 м²</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Garden Houses -->
+                            <div class="swiper-slide">
+                                <div class="gallery-card">
+                                    <div class="gallery-img-wrapper">
+                                        <span class="gallery-badge">Дачный дом</span>
+                                        <img src="images/map-dubki-1.webp" alt="п. Дубки" class="gallery-img">
+                                    </div>
+                                    <div class="gallery-info">
+                                        <h4 class="gallery-title">п. Дубки</h4>
+                                        <div class="gallery-details">
+                                            <span>Садовый 6х6</span>
+                                            <span>36 м²</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="gallery-card">
+                                    <div class="gallery-img-wrapper">
+                                        <span class="gallery-badge">Каркасный дом</span>
+                                        <img src="images/map-hapo-oe-1.webp" alt="д. Хапо-Ое" class="gallery-img">
+                                    </div>
+                                    <div class="gallery-info">
+                                        <h4 class="gallery-title">д. Хапо-Ое</h4>
+                                        <div class="gallery-details">
+                                            <span>Мансардный 8х9</span>
+                                            <span>144 м²</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Utility Buildings -->
+                            <div class="swiper-slide">
+                                <div class="gallery-card">
+                                    <div class="gallery-img-wrapper">
+                                        <span class="gallery-badge">Бытовка</span>
+                                        <img src="images/map-nurma-1.webp" alt="п. Нурма" class="gallery-img">
+                                    </div>
+                                    <div class="gallery-info">
+                                        <h4 class="gallery-title">п. Нурма</h4>
+                                        <div class="gallery-details">
+                                            <span>Бытовка 6х2</span>
+                                            <span>12 м²</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="gallery-card">
+                                    <div class="gallery-img-wrapper">
+                                        <span class="gallery-badge">Дачный дом</span>
+                                        <img src="images/map-lopuhinka.webp" alt="д. Лопухинка" class="gallery-img">
+                                    </div>
+                                    <div class="gallery-info">
+                                        <h4 class="gallery-title">д. Лопухинка</h4>
+                                        <div class="gallery-details">
+                                            <span>Садовый 6х6</span>
+                                            <span>36 м²</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-pagination gallery-pagination"></div>
+                    </div>
+                    <div class="swiper-button-next gallery-nav-next"></div>
+                    <div class="swiper-button-prev gallery-nav-prev"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Map Section -->
+        <section class="map-section section" id="projects-map">
+            <div class="container">
+                <div class="section-header text-center reveal">
+                    <h2 class="section-title">География наших объектов</h2>
+                    <p class="section-desc">Посмотрите объекты, которые мы построили или строим прямо сейчас в
+                        Санкт-Петербурге и Ленинградской области.</p>
+                </div>
+
+                <div class="map-container reveal transition-delay-1">
+                    <div class="map-filters">
+                        <button class="filter-btn active" data-filter="all">Все объекты</button>
+                        <button class="filter-btn" data-filter="completed">✅ Завершенные</button>
+                        <button class="filter-btn" data-filter="in-progress">🏗️ В процессе</button>
+                        <button class="filter-btn" data-filter="cabin">🏠 Бытовки</button>
+                        <button class="filter-btn" data-filter="summer">🏡 Дачные дома</button>
+                        <button class="filter-btn" data-filter="frame">🏘️ Каркасные дома</button>
+                    </div>
+
+                    <div id="projectMap" class="interactive-map"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action -->
+        <section class="cta section">
+            <div class="container">
+                <div class="cta-inner reveal glass-card-dark">
+                    <div class="cta-content">
+                        <h2>Индивидуальный проект? Легко!</h2>
+                        <p>Мы абсолютно бесплатно рассчитаем индивидуальный проект любой сложности с учетом всех ваших
+                            пожеланий!</p>
+                    </div>
+                    <form class="cta-form">
+                        <input type="text" placeholder="Ваше имя" required class="form-input">
+                        <input type="tel" placeholder="Номер телефона" required class="form-input">
+                        <button type="submit" class="btn btn-primary">Оставить заявку на индивидуальный расчет</button><p class="form-policy" style="margin-top: 15px; font-size: 0.8rem; color: rgba(255,255,255,0.7);">Отправляя свои данные, вы соглашаетесь с <a href="privacy.html" target="blank" style="text-decoration: underline; color: inherit;">политикой обработки персональных данных</a></p>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- REVIEWS SECTION -->
+    <section class="reviews-section section bg-light" id="reviews">
+        <div class="container reveal">
+            <div class="section-header text-center">
+                <h2 class="section-title">Отзывы наших клиентов</h2>
+                <p class="section-desc">Узнайте, что говорят люди, которые уже доверили нам строительство своего
+                    загородного дома в Санкт-Петербурге и ЛО.</p>
+            </div>
+
+            <div class="reviews-slider-wrapper">
+                <div class="reviews-slider swiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="review-card">
+                                <div class="review-header">
+                                    <img src="https://randomuser.me/api/portraits/women/12.jpg" alt="Елена Жаркова"
+                                        class="review-avatar">
+                                    <div class="review-author-info">
+                                        <span class="review-name">Елена Жаркова</span>
+                                        <span class="review-meta">42 года • Санкт-Петербург</span>
+                                    </div>
+                                </div>
+                                <div class="review-rating">⭐⭐⭐⭐⭐</div>
+                                <p class="review-text">"Долго выбирали компанию для строительства дачи в Ленобласти.
+                                    Уютный
+                                    Дом подкупил тем, что цены прозрачные и бригады свои. Построили 6х6 с террасой за
+                                    две
+                                    недели. Очень довольна качеством!"</p>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="review-card">
+                                <div class="review-header">
+                                    <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="Алексей Целиков"
+                                        class="review-avatar">
+                                    <div class="review-author-info">
+                                        <span class="review-name">Алексей Целиков</span>
+                                        <span class="review-meta">48 лет • Санкт-Петербург</span>
+                                    </div>
+                                </div>
+                                <div class="review-rating">⭐⭐⭐⭐⭐</div>
+                                <p class="review-text">"Отличная работа! Собирали дом 8х7 у меня на участке. Материал
+                                    качественный, убедился лично. Зимой приезжали на выходные - тепло держит
+                                    отлично. Рекомендую!"</p>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="review-card">
+                                <div class="review-header">
+                                    <img src="https://randomuser.me/api/portraits/women/25.jpg" alt="Наталья Сонина"
+                                        class="review-avatar">
+                                    <div class="review-author-info">
+                                        <span class="review-name">Наталья Сонина</span>
+                                        <span class="review-meta">37 лет • Санкт-Петербург</span>
+                                    </div>
+                                </div>
+                                <div class="review-rating">⭐⭐⭐⭐⭐</div>
+                                <p class="review-text">"Спасибо большое ребятам! Заказывали небольшой дом 5х5. Все
+                                    аккуратно, мусор за собой убрали. Теперь есть где проводить лето с детьми. Муж сам
+                                    проверил каркас - остался доволен."</p>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="review-card">
+                                <div class="review-header">
+                                    <img src="images/review-avatar-sergey.png" alt="Сергей Ларионов"
+                                        class="review-avatar">
+                                    <div class="review-author-info">
+                                        <span class="review-name">Сергей Ларионов</span>
+                                        <span class="review-meta">55 лет • Ленинградская обл.</span>
+                                    </div>
+                                </div>
+                                <div class="review-rating">⭐⭐⭐⭐⭐</div>
+                                <p class="review-text">"Строили дом для постоянного проживания. Переживал за сроки, но
+                                    строители уложились вовремя. Понравилось отношение менеджера и бригадира - всегда на
+                                    связи, все вопросы решали быстро."</p>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="review-card">
+                                <div class="review-header">
+                                    <img src="https://randomuser.me/api/portraits/women/53.jpg" alt="Марина Волкова"
+                                        class="review-avatar">
+                                    <div class="review-author-info">
+                                        <span class="review-name">Марина Волкова</span>
+                                        <span class="review-meta">51 год • Санкт-Петербург</span>
+                                    </div>
+                                </div>
+                                <div class="review-rating">⭐⭐⭐⭐⭐</div>
+                                <p class="review-text">"Случайно наткнулась на ваш сайт, заказала расчет. Оказалось
+                                    дешевле,
+                                    чем у конкурентов. Боялась подвоха, но зря! Дом 6х8 просто чудо, пахнет деревом, всё
+                                    ровненько."</p>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="review-card">
+                                <div class="review-header">
+                                    <img src="https://randomuser.me/api/portraits/men/36.jpg" alt="Дмитрий Соколов"
+                                        class="review-avatar">
+                                    <div class="review-author-info">
+                                        <span class="review-name">Дмитрий Соколов</span>
+                                        <span class="review-meta">39 лет • Санкт-Петербург</span>
+                                    </div>
+                                </div>
+                                <div class="review-rating">⭐⭐⭐⭐</div>
+                                <p class="review-text">"Нормальная контора. Без лишнего пафоса, приехали, разгрузили,
+                                    собрали. Качество материалов хорошее, доска сухая. Планирую еще баню у них заказать
+                                    попозже."</p>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="review-card">
+                                <div class="review-header">
+                                    <img src="https://randomuser.me/api/portraits/women/47.jpg" alt="Ольга Кузнецова"
+                                        class="review-avatar">
+                                    <div class="review-author-info">
+                                        <span class="review-name">Ольга Кузнецова</span>
+                                        <span class="review-meta">45 лет • Выборгский р-н</span>
+                                    </div>
+                                </div>
+                                <div class="review-rating">⭐⭐⭐⭐⭐</div>
+                                <p class="review-text">"Мечтали о даче под Выборгом. Уютный Дом помогли с выбором
+                                    проекта,
+                                    подсказали, где можно сэкономить, а где не стоит. Дом получился очень светлым и
+                                    уютным.
+                                    Спасибо!"</p>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="review-card">
+                                <div class="review-header">
+                                    <img src="https://randomuser.me/api/portraits/men/43.jpg" alt="Игорь Шенгелия"
+                                        class="review-avatar">
+                                    <div class="review-author-info">
+                                        <span class="review-name">Игорь Шенгелия</span>
+                                        <span class="review-meta">43 года • Санкт-Петербург</span>
+                                    </div>
+                                </div>
+                                <div class="review-rating">⭐⭐⭐⭐⭐</div>
+                                <p class="review-text">"Выбрал комплектацию 'Комфорт'. Немного дороже, но оно того
+                                    стоит.
+                                    Толстые полы, хорошая ветрозащита. Бригада работала с утра до вечера, молодцы
+                                    ребята."
+                                </p>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="review-card">
+                                <div class="review-header">
+                                    <img src="https://randomuser.me/api/portraits/women/34.jpg" alt="Анна Новикова"
+                                        class="review-avatar">
+                                    <div class="review-author-info">
+                                        <span class="review-name">Анна Новикова</span>
+                                        <span class="review-meta">36 лет • Всеволожск</span>
+                                    </div>
+                                </div>
+                                <div class="review-rating">⭐⭐⭐⭐⭐</div>
+                                <p class="review-text">"Моя первая стройка, поэтому задавала миллион вопросов. Менеджеры
+                                    всё
+                                    терпеливо объясняли. Сам дом построили быстро, соседи даже удивились. Выглядит
+                                    просто
+                                    супер!"</p>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="review-card">
+                                <div class="review-header">
+                                    <img src="https://randomuser.me/api/portraits/men/52.jpg" alt="Владимир Рулев"
+                                        class="review-avatar">
+                                    <div class="review-author-info">
+                                        <span class="review-name">Владимир Рулев</span>
+                                        <span class="review-meta">34 года • Ленинградская обл.</span>
+                                    </div>
+                                </div>
+                                <div class="review-rating">⭐⭐⭐⭐⭐</div>
+                                <p class="review-text">"Загородный дом - удовольствие не из дешевых, но тут цены
+                                    адекватные.
+                                    Прямой договор, понятная смета. Строители русские ребята, дело свое знают. Живем и
+                                    радуемся."</p>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="review-card">
+                                <div class="review-header">
+                                    <img src="https://randomuser.me/api/portraits/women/49.jpg" alt="Светлана Куценко"
+                                        class="review-avatar">
+                                    <div class="review-author-info">
+                                        <span class="review-name">Светлана Куценко</span>
+                                        <span class="review-meta">49 лет • Санкт-Петербург</span>
+                                    </div>
+                                </div>
+                                <div class="review-rating">⭐⭐⭐⭐⭐</div>
+                                <p class="review-text">"Шикарный дом с огромной террасой! Теперь все лето будем
+                                    проводить
+                                    загородом. Качество сборки на высоте, нигде ничего не скрипит и не дует. Однозначно
+                                    рекомендую."</p>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="review-card">
+                                <div class="review-header">
+                                    <img src="images/review-avatar-andrey-selfie.png" alt="Андрей Васильев"
+                                        class="review-avatar">
+                                    <div class="review-author-info">
+                                        <span class="review-name">Андрей Васильев</span>
+                                        <span class="review-meta">46 лет • Санкт-Петербург</span>
+                                    </div>
+                                </div>
+                                <div class="review-rating">⭐⭐⭐⭐⭐</div>
+                                <p class="review-text">"Заказывали дом 6х9. Фундамент закрутили за день, дом поставили
+                                    за
+                                    пару недель. Все по уму, утепление плотное. Отличный вариант за эти деньги."</p>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="review-card">
+                                <div class="review-header">
+                                    <img src="https://randomuser.me/api/portraits/women/54.jpg" alt="Татьяна Михайлова"
+                                        class="review-avatar">
+                                    <div class="review-author-info">
+                                        <span class="review-name">Татьяна Михайлова</span>
+                                        <span class="review-meta">42 года • Гатчина</span>
+                                    </div>
+                                </div>
+                                <div class="review-rating">⭐⭐⭐⭐⭐</div>
+                                <p class="review-text">"У нас 4 детей, бюджет был ограничен. Спасибо, что подобрали нам
+                                    подходящий проект и не навязывали лишние услуги. Дом получился теплым и комфортным."
+                                </p>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="review-card">
+                                <div class="review-header">
+                                    <img src="https://randomuser.me/api/portraits/men/41.jpg" alt="Максим Лунев"
+                                        class="review-avatar">
+                                    <div class="review-author-info">
+                                        <span class="review-name">Максим Лунев</span>
+                                        <span class="review-meta">31 год • Санкт-Петербург</span>
+                                    </div>
+                                </div>
+                                <div class="review-rating">⭐⭐⭐⭐</div>
+                                <p class="review-text">"Достойная компания! Сделали все четко по договору. Бригада не
+                                    пьющая
+                                    (что редкость), работали на совесть. Качество отделки вагонкой очень порадовало."
+                                </p>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="review-card">
+                                <div class="review-header">
+                                    <img src="https://randomuser.me/api/portraits/women/38.jpg" alt="Екатерина Багина"
+                                        class="review-avatar">
+                                    <div class="review-author-info">
+                                        <span class="review-name">Екатерина Багина</span>
+                                        <span class="review-meta">38 лет • Санкт-Петербург</span>
+                                    </div>
+                                </div>
+                                <div class="review-rating">⭐⭐⭐⭐⭐</div>
+                                <p class="review-text">"Решили строиться зимой, чтобы к весне было готово. Переживали,
+                                    получится ли. Каркасник зимой ставить даже лучше! Древесина сухая, собрали идеально.
+                                    Спасибо за работу!"</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-pagination mt-4"></div>
+                </div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer" id="contacts">
+        <div class="container footer-container">
+            <div class="footer-col">
+                <a href="index.html" class="logo">
+                    <img src="images/logo.webp" alt="Уютный Дом" class="logo-img">
+                    <span class="logo-text">Уютный <span class="highlight">Дом</span></span>
+                </a>
+                <p class="footer-desc">Строим комфортное и доступное жилье в Санкт-Петербурге и ЛО. Ваша мечта о
+                    загородном доме ближе, чем кажется.</p>
+            </div>
+            <div class="footer-col">
+                <h4 class="footer-title">Навигация</h4>
+                <ul class="footer-links">
+                    <li><a href="#services">Каталог</a></li>
+                    <li><a href="about.html">О компании</a></li>
+                    <li><a href="news.html">Наши новости</a></li>
+                    <li><a href="jobs.html">Вакансии</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4 class="footer-title">Контакты</h4>
+                <ul class="footer-contact">
+                    <li>📞 +7 (993) 070-34-89</li>
+                    <li>✉️ info@domsweet.ru</li>
+                    <li>📍 г. Санкт-Петербург, пр-т Обуховской обороны, д. 76 корп. 4</li>
+                </ul>
+                <div class="footer-socials" style="margin-top: 16px; display: flex; gap: 12px;">
+                    <a href="https://t.me/+JQxbJ6UCaIE1NjZi" target="_blank" class="social-link"
+                        style="color: var(--color-primary); transition: var(--transition);">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM16.64 8.8C16.49 10.35 15.82 14.33 15.48 16.14C15.34 16.91 15.05 17.17 14.78 17.19C14.17 17.24 13.72 16.79 13.13 16.4C12.22 15.79 11.69 15.41 10.82 14.84C9.8 14.17 10.46 13.8 11.05 13.18C11.2 13.02 13.84 10.62 13.89 10.4C13.9 10.37 13.9 10.3 13.87 10.27C13.83 10.24 13.78 10.25 13.74 10.26C13.67 10.27 12.55 11.02 10.38 12.49C10.06 12.71 9.77 12.82 9.51 12.81C9.23 12.8 8.68 12.64 8.27 12.51C7.74 12.33 7.33 12.24 7.37 11.94C7.39 11.79 7.59 11.63 7.98 11.47C10.38 10.43 11.98 9.77 12.78 9.44C15.06 8.49 15.54 8.32 15.85 8.32C15.92 8.32 16.07 8.34 16.17 8.42C16.25 8.49 16.27 8.59 16.28 8.66C16.28 8.7 16.64 8.8 16.64 8.8Z" />
+                        </svg>
+                    </a>
+                    <a href="https://vk.com/sk_uyutdom" target="_blank" class="social-link"
+                        style="color: var(--color-primary); transition: var(--transition);">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M13.162 18.994c-6.845 0-10.742-4.708-10.875-12.536h3.402c.081 5.952 2.658 8.411 4.671 8.93v-8.93h3.208v5.101c1.986-.217 4.102-2.585 4.823-5.101h3.208c-.615 3.09-2.868 5.37-4.436 6.253 1.567.722 4.09 2.76 4.966 6.283H18.61c-.687-2.617-2.62-4.48-5.323-4.757v4.757h-1.125z" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <p>&copy; 2026 Уютный дом. Все права защищены. <a href="privacy.html" style="color: inherit; text-decoration: underline; margin-left: 10px;">Политика конфиденциальности</a></p>
+        </div>
+    </footer>
+
+    <!-- PROMO MODAL -->
+    <div class="modal-overlay" id="promo-modal">
+        <div class="modal-content">
+            <button class="modal-close promo-modal-close">×</button>
+            <div class="modal-header">
+                <h3>Забронировать подарок</h3>
+                <p>Ваш подарок: <strong class="promo-gift-name text-primary">...</strong></p>
+                <p class="text-sm text-muted">Оставьте контакты, и мы закрепим этот подарок за вашим номером телефона на
+                    30 дней!</p>
+            </div>
+            <form class="modal-form">
+                <input type="text" placeholder="Ваше имя" required class="form-input">
+                <input type="tel" placeholder="Ваш телефон" required class="form-input">
+                <button type="submit" class="btn btn-primary w-100">Зафиксировать подарок</button>
+                <p class="form-policy">Отправляя свои данные, вы соглашаетесь с <a href="privacy.html" target="blank" style="text-decoration: underline; color: inherit;">политикой обработки персональных данных</a></p>
+            </form>
+        </div>
+    </div>
+
+    <!-- CALCULATION MODAL -->
+    <div class="modal-overlay" id="calc-modal">
+        <div class="modal-content">
+            <button class="modal-close calc-modal-close">×</button>
+            <div class="modal-header">
+                <h3>Заявка на расчет</h3>
+                <p id="calc-project-name">Проект: Индивидуальный расчет</p>
+            </div>
+            <form class="modal-form">
+                <input type="text" placeholder="Ваше имя *" required class="form-input">
+                <input type="tel" placeholder="Ваш телефон *" required class="form-input">
+                <textarea placeholder="Ваши пожелания по проекту (необязательно)" class="form-input"
+                    rows="4"></textarea>
+                <button type="submit" class="btn btn-primary w-100">Отправить заявку</button>
+                <p class="form-policy">Отправляя свои данные, вы соглашаетесь с <a href="privacy.html" target="blank" style="text-decoration: underline; color: inherit;">политикой обработки персональных данных</a></p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Leaflet Map JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+
+</html>

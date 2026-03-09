@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 80">
+    <g transform="translate(10, 10)">
+        <path d="M0 10 L50 10 L45 18 L-5 18 Z" fill="#00AAFF"/>
+        <path d="M5 24 L55 24 L50 32 L0 32 Z" fill="#00AAFF"/>
+        <path d="M10 38 L60 38 L55 46 L5 46 Z" fill="#00AAFF"/>
+        <text x="75" y="48" font-family="'Inter', sans-serif" font-weight="900" font-size="48" fill="#0039A6">ВТБ</text>
+    </g>
+</svg>

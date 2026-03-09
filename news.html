@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Наши новости | Уютный Дом — Блог о жизни компании</title>
+    <meta name="description"
+        content="Следите за новостями компании Уютный Дом. Отчеты со строек, новые технологии, акции и важные события нашего производства.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏠</text></svg>">
+
+    <style>
+        /* News Page Specific Styles */
+        .news-hero {
+            padding: 140px 0 60px;
+            background: var(--color-bg-light);
+            text-align: center;
+        }
+
+        .news-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 16px;
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px;
+            padding: 60px 0;
+        }
+
+        .news-card {
+            background: #fff;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+            box-shadow: var(--shadow-soft);
+            cursor: pointer;
+        }
+
+        .news-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--color-primary);
+        }
+
+        .news-img-wrapper {
+            position: relative;
+            height: 180px;
+            overflow: hidden;
+        }
+
+        .news-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .news-card:hover .news-img {
+            transform: scale(1.05);
+        }
+
+        .news-date-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(4px);
+            padding: 4px 12px;
+            border-radius: var(--radius-full);
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .news-content {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .news-title {
+            font-size: 1.15rem;
+            line-height: 1.4;
+            margin-bottom: 10px;
+            color: var(--color-primary-dark);
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            height: 3.2em;
+        }
+
+        .news-excerpt {
+            font-size: 0.9rem;
+            color: var(--color-text-muted);
+            line-height: 1.5;
+            margin-bottom: 20px;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .read-more {
+            margin-top: auto;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: var(--transition);
+        }
+
+        .news-card:hover .read-more {
+            gap: 10px;
+        }
+
+        /* News Modal Styles */
+        .news-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(8px);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            padding: 20px;
+        }
+
+        .news-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .news-modal-content {
+            background: #fff;
+            width: 100%;
+            max-width: 800px;
+            max-height: 90vh;
+            border-radius: var(--radius-lg);
+            overflow-y: auto;
+            position: relative;
+            transform: translateY(20px);
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+        }
+
+        .news-modal.active .news-modal-content {
+            transform: translateY(0);
+        }
+
+        .news-modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: #fff;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .news-modal-close:hover {
+            background: var(--color-primary);
+            color: #fff;
+            transform: rotate(90deg);
+        }
+
+        .news-modal-img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+
+        .news-modal-body {
+            padding: 40px;
+        }
+
+        .news-modal-date {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--color-accent-hover);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .news-modal-title {
+            font-size: 2rem;
+            margin-bottom: 24px;
+            line-height: 1.2;
+            color: var(--color-primary-dark);
+        }
+
+        .news-modal-text {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: var(--color-text-main);
+        }
+
+        .news-modal-text p {
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .news-modal-img {
+                height: 250px;
+            }
+
+            .news-modal-body {
+                padding: 30px 20px;
+            }
+
+            .news-modal-title {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (min-width: 1400px) {
+            .news-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header" id="header">
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <img src="images/logo.webp" alt="Уютный Дом" class="logo-img">
+                <span class="logo-text">Уютный <span class="highlight">Дом</span></span>
+            </a>
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="index.html#services" class="nav-link">Каталог</a></li>
+                    <li class="dropdown">
+                        <a href="about.html" class="nav-link">О нас <span class="dropdown-arrow">▼</span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="about.html">О компании</a></li>
+                            <li><a href="news.html">Наши новости</a></li>
+                            <li><a href="jobs.html">Вакансии в команду мечты</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="index.html#contacts" class="nav-link">Контакты</a></li>
+                </ul>
+            </nav>
+            <button class="btn btn-primary cta-button">Заказать звонок</button>
+            <div class="mobile-menu-btn" id="mobile-menu-btn">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="news-hero">
+            <div class="container">
+                <span class="badge">Блог компании</span>
+                <h1>Наши <span>новости</span></h1>
+                <p>Делимся самыми важными событиями, отчетами со строек и планами на будущее.</p>
+            </div>
+        </section>
+
+        <div class="container">
+            <div class="news-grid" id="news-grid">
+                <!-- Item 1: 23.09.2024 -->
+                <article class="news-card reveal" data-id="1">
+                    <div class="news-img-wrapper">
+                        <img src="images/news-cash.png" alt="Оплата только наличными" class="news-img">
+                        <div class="news-date-badge">23.09.2024</div>
+                    </div>
+                    <div class="news-content">
+                        <h2 class="news-title">Изменения при оплате ипотекой</h2>
+                        <p class="news-excerpt">Друзья, в связи с введением обязательных эскроу-счетов, мы
+                            приостанавливаем массовую работу с ипотеками.</p>
+                        <div class="read-more">Читать полностью <span>→</span></div>
+                    </div>
+                    <template class="news-full-text">
+                        <p>Друзья, в связи с введением обязательных эскроу-счетов, мы приостанавливаем массовую работу с
+                            ипотеками.</p>
+                        <p>Но мы понимаем, как важна ипотека! Поэтому каждый год мы выделяем специальные лимитированные
+                            квоты. Их немного, поэтому большая часть из них распределяется в начале сезона, но ситуация
+                            постоянно меняется.</p>
+                        <p>Не стесняйтесь уточнять наличие свободных мест у своего менеджера — мы очень постараемся
+                            найти решение именно для вашей мечты о собственном доме!</p>
+                    </template>
+                </article>
+
+                <!-- Item 2: 10.08.2023 -->
+                <article class="news-card reveal transition-delay-1" data-id="2">
+                    <div class="news-img-wrapper">
+                        <img src="images/news-cabins-1.webp" alt="Возобновление производства" class="news-img">
+                        <div class="news-date-badge">10.08.2023</div>
+                    </div>
+                    <div class="news-content">
+                        <h2 class="news-title">Мы открыли производство!</h2>
+                        <p class="news-excerpt">Мы получили сотни запросов и наконец готовы объявить: наше производство
+                            готовых изделий (мобильные бани и хозблоки) возобновляет свою работу в полном объеме!</p>
+                        <div class="read-more">Перейти в каталог <span>→</span></div>
+                    </div>
+                    <template class="news-full-text">
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px;">
+                            <img src="images/news-cabins-1.webp" alt="Производство 1"
+                                style="width: 100%; border-radius: 8px;">
+                            <img src="images/news-cabins-2.webp" alt="Производство 2"
+                                style="width: 100%; border-radius: 8px;">
+                        </div>
+                        <p>Мы получили сотни запросов и наконец готовы объявить: наше производство готовых изделий
+                            (мобильные бани и хозблоки) возобновляет свою работу в полном объеме!</p>
+                        <p>За три года перерыва мы модернизировали производственные линии и обновили проекты. Теперь
+                            наши мобильные бытовки и бани стали еще теплее и долговечнее.</p>
+                        <p>Срок изготовления — от 10 рабочих дней. Доставка осуществляется краном-манипулятором в любую
+                            точку СПб и ЛО.</p>
+                    </template>
+                </article>
+
+                <!-- Item 3: 26.03.2023 -->
+                <article class="news-card reveal transition-delay-2" data-id="3">
+                    <div class="news-img-wrapper">
+                        <img src="images/news-solnechnaya-dolina.webp" alt="День открытых дверей" class="news-img">
+                        <div class="news-date-badge">26.03.2023</div>
+                    </div>
+                    <div class="news-content">
+                        <h2 class="news-title">День открытых дверей в «Солнечной Долине»</h2>
+                        <p class="news-excerpt">В минувшее воскресенье в поселке «Солнечная Долина» прошла наша
+                            традиционная встреча с потенциальными клиентами на готовом объекте.</p>
+                        <div class="read-more">Смотреть детали <span>→</span></div>
+                    </div>
+                    <template class="news-full-text">
+                        <p>В минувшее воскресенье в поселке «Солнечная Долина» прошла наша традиционная встреча с
+                            потенциальными клиентами на готовом объекте.</p>
+                        <p>Мы показали завершенный дом размером 6х8 метров в комплектации «Премиум». Основной акцент во
+                            время экскурсии был сделан на качестве материалов и готового дома!</p>
+                        <p>Будущие владельцы смогли лично пообщаться с хозяевами дома и получить честную обратную связь
+                            о работе нашей бригады. Следите за анонсами следующей встречи!</p>
+                    </template>
+                </article>
+
+                <!-- Item 4: 04.02.2023 -->
+                <article class="news-card reveal transition-delay-3" data-id="4">
+                    <div class="news-img-wrapper">
+                        <img src="images/news-mortgage.png" alt="Аккредитация Сбербанка" class="news-img">
+                        <div class="news-date-badge">04.02.2023</div>
+                    </div>
+                    <div class="news-content">
+                        <h2 class="news-title">Мы получили аккредитацию!</h2>
+                        <p class="news-excerpt">Строительная компания «Уютный Дом» официально получила статус
+                            аккредитованного застройщика в ПАО Сбербанк. Это важный этап, подтверждающий нашу
+                            надежность.</p>
+                        <div class="read-more">Узнать условия <span>→</span></div>
+                    </div>
+                    <template class="news-full-text">
+                        <p>Строительная компания «Уютный Дом» официально получила статус аккредитованного застройщика в
+                            ПАО Сбербанк. Это важный этап, подтверждающий нашу надежность.</p>
+                        <p>Что это значит для вас? Теперь наши дома можно приобрести в ипотеку! Кроме того, нашим
+                            клиентам доступна возможность использования материнского капитала как первоначального
+                            взноса.</p>
+                        <p>Мы также внедрили сервис электронной регистрации сделки, что позволяет оформить все документы
+                            за один визит в офис, не посещая МФЦ. Будущее загородного строительства стало еще доступнее!
+                        </p>
+                    </template>
+                </article>
+
+                <!-- Item 5: 22.07.2022 -->
+                <article class="news-card reveal" data-id="5">
+                    <div class="news-img-wrapper">
+                        <img src="images/news-managers.webp" alt="Обучение на производстве" class="news-img">
+                        <div class="news-date-badge">22.07.2022</div>
+                    </div>
+                    <div class="news-content">
+                        <h2 class="news-title">Практика на стройке: обучение менеджеров</h2>
+                        <p class="news-excerpt">В нашей компании действует правило: «Все сотрудники должны знать наш
+                            продукт». Именно поэтому мы провели масштабную стажировку для новых менеджеров.</p>
+                        <div class="read-more">Как мы учим команду <span>→</span></div>
+                    </div>
+                    <template class="news-full-text">
+                        <p>В нашей компании действует правило: «Все сотрудники должны знать наш продукт». Именно поэтому
+                            мы провели масштабную стажировку для новых менеджеров на наших строительных площадках.</p>
+                        <p>Этот опыт позволяет нам давать максимально честные и профессиональные консультации клиентам.
+                            Теперь каждый наш менеджер знает не только «сколько стоит», но и «почему это сделано именно
+                            так».</p>
+                    </template>
+                </article>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal for Full News -->
+    <div class="news-modal" id="news-modal">
+        <div class="news-modal-content">
+            <button class="news-modal-close" id="modal-close">×</button>
+            <img src="" alt="" class="news-modal-img" id="modal-img">
+            <div class="news-modal-body">
+                <span class="news-modal-date" id="modal-date"></span>
+                <h2 class="news-modal-title" id="modal-title"></h2>
+                <div class="news-modal-text" id="modal-text"></div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer" id="contacts">
+        <div class="container footer-container">
+            <div class="footer-col">
+                <a href="index.html" class="logo">
+                    <img src="images/logo.webp" alt="Уютный Дом" class="logo-img">
+                    <span class="logo-text">Уютный <span class="highlight">Дом</span></span>
+                </a>
+                <p class="footer-desc">Строим комфортное и доступное жилье в Санкт-Петербурге и ЛО.</p>
+            </div>
+            <div class="footer-col">
+                <h4 class="footer-title">Навигация</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html#services">Каталог</a></li>
+                    <li><a href="about.html">О компании</a></li>
+                    <li><a href="news.html">Наши новости</a></li>
+                    <li><a href="jobs.html">Вакансии</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4 class="footer-title">Контакты</h4>
+                <ul class="footer-contact">
+                    <li>📞 +7 (993) 070-34-89</li>
+                    <li>📍 пр-т Обуховской обороны, д. 76 корп. 4</li>
+                </ul>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <p>&copy; 2026 Уютный дом. Все права защищены. <a href="privacy.html" style="color: inherit; text-decoration: underline; margin-left: 10px;">Политика конфиденциальности</a></p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script>
+        const newsCards = document.querySelectorAll('.news-card');
+        const modal = document.getElementById('news-modal');
+        const modalImg = document.getElementById('modal-img');
+        const modalDate = document.getElementById('modal-date');
+        const modalTitle = document.getElementById('modal-title');
+        const modalText = document.getElementById('modal-text');
+        const closeBtn = document.getElementById('modal-close');
+
+        newsCards.forEach(card => {
+            card.addEventListener('click', () => {
+                const img = card.querySelector('.news-img').src;
+                const date = card.querySelector('.news-date-badge').innerText;
+                const title = card.querySelector('.news-title').innerText;
+                const fullText = card.querySelector('template').innerHTML;
+
+                modalImg.src = img;
+                modalImg.alt = title;
+                modalDate.innerText = date;
+                modalTitle.innerText = title;
+                modalText.innerHTML = fullText;
+
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden'; // Prevent scroll
+            });
+        });
+
+        const closeModal = () => {
+            modal.classList.remove('active');
+            document.body.style.overflow = ''; // Restore scroll
+        };
+
+        closeBtn.addEventListener('click', closeModal);
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.classList.contains('active')) closeModal();
+        });
+
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) header.classList.add('scrolled');
+            else header.classList.remove('scrolled');
+        });
+    </script>
+</body>
+
+</html>

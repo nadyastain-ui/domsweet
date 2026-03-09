@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Политика конфиденциальности — Уютный Дом</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .privacy-container {
+            padding: 100px 0 60px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .pdf-viewer {
+            width: 100%;
+            height: 800px;
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin-top: 30px;
+        }
+
+        .fallback-link {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 24px;
+            background: var(--color-primary);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header (Simple version) -->
+    <header id="header" class="header scrolled">
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <img src="images/logo.webp" alt="Уютный Дом" class="logo-img">
+                <span class="logo-text">Уютный <span class="highlight">Дом</span></span>
+            </a>
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-link">На главную</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="privacy-container">
+                <h1 class="section-title">Политика конфиденциальности</h1>
+                <p class="section-desc">Документ об обработке персональных данных пользователей.</p>
+
+                <!-- Embed PDF -->
+                <object data="privacy.pdf" type="application/pdf" class="pdf-viewer">
+                    <p>Ваш браузер не поддерживает просмотр PDF.
+                        <a href="privacy.pdf" class="fallback-link">Скачать PDF файл</a>
+                    </p>
+                </object>
+
+                <div class="text-center" style="margin-top: 40px;">
+                    <a href="privacy.pdf" target="_blank" class="fallback-link">Открыть документ в новом окне</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-bottom">
+            <p>&copy; 2026 Уютный дом. Все права защищены. <a href="index.html"
+                    style="color: #fff; margin-left: 20px;">Вернуться на сайт</a></p>
+        </div>
+    </footer>
+</body>
+
+</html>

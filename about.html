@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>О компании | Уютный Дом — Наша история и ценности</title>
+    <meta name="description"
+        content="Узнайте историю компании Уютный Дом. Мы строим качественные дома с 2015 года, предлагая индивидуальные решения и гарантируя сроки. Аккредитованный подрядчик ведущих банков.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏠</text></svg>">
+</head>
+
+<body>
+    <header class="header" id="header">
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <img src="images/logo.webp" alt="Уютный Дом" class="logo-img">
+                <span class="logo-text">Уютный <span class="highlight">Дом</span></span>
+            </a>
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="index.html#services" class="nav-link">Каталог</a></li>
+                    <li class="dropdown">
+                        <a href="about.html" class="nav-link active">О нас <span class="dropdown-arrow">▼</span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="about.html">О компании</a></li>
+                            <li><a href="news.html">Наши новости</a></li>
+                            <li><a href="jobs.html">Вакансии в команду мечты</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="index.html#contacts" class="nav-link">Контакты</a></li>
+                </ul>
+            </nav>
+            <button class="btn btn-primary cta-button">Заказать звонок</button>
+            <div class="mobile-menu-btn" id="mobile-menu-btn">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- ABOUT HERO -->
+        <section class="about-hero section">
+            <div class="container">
+                <div class="about-hero-grid">
+                    <div class="about-hero-content reveal">
+                        <span class="badge">Наша история</span>
+                        <h1 class="section-title" style="text-align: left; margin-bottom: 20px;">Строим не просто дома,
+                            а <span>мечты об уюте</span></h1>
+                        <p class="about-intro">Мы — команда страстных профессионалов, которые верят, что качественное
+                            жилье должно быть доступным и индивидуальным. За 9 лет мы прошли путь от маленькой
+                            мастерской до крупного застройщика, сохранив при этом чуткий подход к каждому клиенту.</p>
+                    </div>
+                    <div class="about-hero-image reveal transition-delay-1">
+                        <img src="images/about-hero.webp" alt="Реализованный проект Уютный Дом"
+                            class="img-responsive rounded-lg shadow-lg">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TIMELINE SECTION -->
+        <section class="timeline-section section bg-light overflow-hidden">
+            <div class="container">
+                <div class="section-header text-center reveal">
+                    <h2 class="section-title">Путь развития</h2>
+                    <p class="section-desc">Как менялся «Уютный Дом» за эти годы</p>
+                </div>
+
+                <div class="timeline">
+                    <div class="timeline-line"></div>
+
+                    <div class="timeline-item reveal">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content left">
+                            <span class="timeline-year">2015</span>
+                            <h3>С чего все начиналось</h3>
+                            <p>Мы стартовали как небольшое производство мобильных бань и перевозимых бытовок. Это было
+                                время, когда мы учились работать с деревом и создавать максимум комфорта на минимальной
+                                площади.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item reveal">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content right">
+                            <span class="timeline-year">2020</span>
+                            <h3>Выход за рамки габаритов</h3>
+                            <p>Пандемия изменила рынок. Мы поняли, что людям нужно больше пространства. Мы закрыли цех
+                                по сборке бытовок и полностью перешли на строительство на участках клиентов. Это
+                                позволило нам забыть о транспортных ограничениях и начать строить просторные
+                                «мини-дома».</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item reveal">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content left">
+                            <span class="timeline-year">2022 — Сегодня</span>
+                            <h3>Полноценные дома</h3>
+                            <p>С 2022 года мы сфокусировались на строительстве капитальных домов для круглогодичного
+                                проживания. Теперь в нашем портфолио есть и теплые зимние коттеджи, и современные
+                                архитектурные решения.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BANK ACCREDITATION -->
+        <section class="bank-section section bg-white">
+            <div class="container">
+                <div class="bank-grid">
+                    <div class="bank-content reveal">
+                        <h2 class="section-title" style="text-align: left;">Нам доверяют <span>государство и
+                                банки</span></h2>
+                        <p>«Уютный Дом» является официально аккредитованным подрядчиком в крупнейших банках страны. Это
+                            ваша гарантия безопасности сделки и возможности использовать льготные ипотечные программы.
+                        </p>
+                    </div>
+                    <div class="bank-logos reveal transition-delay-1">
+                        <div class="bank-card">
+                            <img src="images/logo-sber.svg" alt="Сбербанк" class="bank-logo-img">
+                            <span>Аккредитован Сбербанком</span>
+                        </div>
+                        <div class="bank-card">
+                            <img src="images/logo-vtb.svg" alt="ВТБ" class="bank-logo-img">
+                            <span>Официальный партнер ВТБ</span>
+                        </div>
+                        <div class="bank-card">
+                            <img src="images/logo-alfa.svg" alt="Альфа-Банк" class="bank-logo-img">
+                            <span>Партнер Альфа-Банка</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- VALUES SECTION -->
+        <section class="values-section section bg-light">
+            <div class="container">
+                <div class="section-header text-center reveal">
+                    <h2 class="section-title">Почему выбирают <span>нас</span></h2>
+                    <p class="section-desc">Наши принципы, которые не меняются с 2015 года</p>
+                </div>
+
+                <div class="values-grid">
+                    <div class="value-card reveal">
+                        <div class="value-icon">✍️</div>
+                        <h3>Индивидуальные решения</h3>
+                        <p>Мы одни из немногих на рынке, кто действительно готов менять проект под ваши нужды. Нам
+                            важно, чтобы дом был удобен именно вам.</p>
+                    </div>
+                    <div class="value-card reveal transition-delay-1">
+                        <div class="value-icon">⏰</div>
+                        <h3>Всегда вовремя</h3>
+                        <p>Строгое соблюдение сроков — наш фетиш. Мы ценим ваше время и выполняем все этапы
+                            строительства без задержек.</p>
+                    </div>
+                    <div class="value-card reveal transition-delay-2">
+                        <div class="value-icon">🤝</div>
+                        <h3>Чуткая команда</h3>
+                        <p>Для нас каждый клиент — это личность с уникальной мечтой. Наша команда делает все возможное,
+                            чтобы процесс стройки был для вас радостью.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- JOIN OUR TEAM SECTION -->
+        <section class="join-team-section section bg-white">
+            <div class="container">
+                <div class="about-hero-grid" style="align-items: center;">
+                    <div class="about-hero-image reveal">
+                        <img src="https://images.unsplash.com/photo-1541746972996-4e0b0f43e01a?auto=format&fit=crop&q=80&w=1000"
+                            alt="Наша команда" class="img-responsive rounded-lg shadow-lg">
+                    </div>
+                    <div class="about-hero-content reveal transition-delay-1">
+                        <span class="badge">Работа у нас</span>
+                        <h2 class="section-title" style="text-align: left;">Присоединяйтесь к команде <span>Уютного
+                                Дома</span></h2>
+                        <p>Мы постоянно растем и ищем талантливых людей, которые любят стройку и ценят качество так же,
+                            как и мы. У нас вы найдете интересные задачи, достойную оплату и возможность развиваться
+                            вместе с лидерами рынка.</p>
+                        <div style="margin-top: 24px;">
+                            <a href="jobs.html" class="btn btn-secondary">Посмотреть вакансии</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA SECTION -->
+        <section class="cta section">
+            <div class="container">
+                <div class="cta-inner reveal glass-card-dark" style="text-align: center;">
+                    <h2>Давайте построим вашу историю вместе</h2>
+                    <p>Оставьте заявку, и мы бесплатно проконсультируем вас по любому проекту или рассчитаем ваш
+                        индивидуальный эскиз.</p>
+                    <div style="margin-top: 30px;">
+                        <button class="btn btn-primary btn-large open-calc-modal" data-project="О компании">Связаться с
+                            нами</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer" id="contacts">
+        <div class="container footer-container">
+            <div class="footer-info">
+                <a href="index.html" class="logo">
+                    <img src="images/logo.webp" alt="Уютный Дом" class="logo-img">
+                    <span class="logo-text">Уютный <span class="highlight">Дом</span></span>
+                </a>
+                <p class="footer-desc">Строим качественные загородные дома с 2015 года. Мы объединяем опыт, инновации и
+                    индивидуальный подход.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Разделы</h4>
+                <ul>
+                    <li><a href="index.html#services">Каталог</a></li>
+                    <li><a href="about.html">О компании</a></li>
+                    <li><a href="index.html#contacts">Контакты</a></li>
+                </ul>
+            </div>
+            <div class="footer-contacts">
+                <h4>Контакты</h4>
+                <p>📍 Санкт-Петербург, Ленинградская обл.</p>
+                <p>📞 +7 (812) 555-01-02</p>
+                <p>📧 info@domsweet.ru</p>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <p>&copy; 2026 Уютный дом. Все права защищены. <a href="privacy.html" style="color: inherit; text-decoration: underline; margin-left: 10px;">Политика конфиденциальности</a></p>
+        </div>
+    </footer>
+
+    <!-- CALCULATION MODAL -->
+    <div class="modal-overlay" id="calc-modal">
+        <div class="modal-content">
+            <button class="modal-close calc-modal-close">×</button>
+            <div class="modal-header">
+                <h3>Заявка на расчет</h3>
+            </div>
+            <form class="modal-form">
+                <input type="text" placeholder="Ваше имя *" required class="form-input">
+                <input type="tel" placeholder="Ваш телефон *" required class="form-input">
+                <textarea placeholder="Ваши пожелания по проекту (необязательно)" class="form-input"
+                    rows="4"></textarea>
+                <button type="submit" class="btn btn-primary w-100">Отправить заявку</button>
+                <p class="form-policy">Отправляя свои данные, вы соглашаетесь с <a href="privacy.html" target="blank" style="text-decoration: underline; color: inherit;">политикой обработки персональных данных</a></p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+
+</html>
